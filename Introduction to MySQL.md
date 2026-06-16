@@ -187,6 +187,61 @@ MySQL supports replication, allowing data from one database server (master) to b
 - Data Warehousing: MySQL is also used for analytical applications and reporting in data warehousing environments.
 - Content Management Systems (CMS): Many CMSs, such as Drupal and Joomla, use MySQL to manage the data and content.
 
+# EXAMPLE STUDENT DATABASE
+
+## How to Run?
+- XAMPP -- Apache and MySQL
+- Click 'Admin' on MySQL
+- SQL tab on localhost/phpMyAdmin
+- Export and Import to save and upload databases
+  
+## Syntax
+```
+/* CREATE */
+CREATE DATABASE student_database;
+USE student_database;
+
+CREATE TABLE students (
+    student_id VARCHAR(10) NOT NULL PRIMARY KEY,
+    fname VARCHAR(20) NOT NULL,
+    lname VARCHAR(20) NOT NULL
+);
+
+/* INSERT */
+INSERT INTO students (student_id, fname, lname) VALUES 
+('25103012', 'Kier', 'Tan'), 
+('25103389', 'Khugo','Auditor'), 
+('31200593','Nathan','Ares'),
+('25104567','Andrei','Serenio'),
+('25102916','Em Jihann','Lahaylahay'),
+('23102075','Kent','Rojas'),
+('23100488','Andrea','To Chip'),
+('21200386','Sharmaine','Agustin'),
+('31200709','Xian','Baguio'),
+('25101569','Keira','Iway'),
+('19010069','Rayge','Ruelan'),
+('25104293','Rayce','Fillon'),
+('25103836','Savion','Go'),
+('22103502','Matthew','Golez'),
+('22400033','Psych','Mariscal'),
+('24105222','Neil','Codera'),
+('24103298','Karylle','Jagdon');
+
+/* ADD NEW PRIMARY KEY COLUMN */
+
+ALTER TABLE students
+ADD COLUMN studID INT NOT NULL AUTO_INCREMENT FIRST,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (studID),
+ADD UNIQUE (student_id);
+
+/* SELECT WHOLE TABLE */
+SELECT * FROM students;
+
+/* DROP DATABASE */
+DROP DATABASE student_database;
+```
+
 # Conclusion
 MySQL is a powerful, open-source relational database management system that supports a wide range of applications, from small web projects to enterprise-level systems. Its scalability, security features, and cross-platform support make it a popular choice among developers and organizations. By using SQL commands, users can interact with MySQL to define, manipulate, and query data, ensuring that the database is flexible, reliable, and efficient.
 
