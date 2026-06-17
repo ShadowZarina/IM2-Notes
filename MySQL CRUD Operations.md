@@ -150,6 +150,210 @@ Delete: Remove the customer with customer_id = 2.
 1	DELETE FROM customers
 2	WHERE customer_id = 2;
 
+# ALTER TABLE Statement
+
+SQL ALTER TABLE Statement
+The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+
+The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
+
+Common ALTER TABLE operations are:
+
+Add column - Adds a new column to a table
+Drop column - Deletes a column in a table
+Rename column - Renames a column
+Modify column - Changes the data type, size, or constraints of a column
+Add constraint - Adds a new constraint
+Rename table - Renames a table
+ALTER TABLE - ADD Column
+To add a column in a table, use the following syntax:
+
+Syntax
+ALTER TABLE table_name
+ADD column_name datatype;
+The following SQL adds an "Email" column to the "Customers" table:
+
+ExampleGet your own SQL Server
+ALTER TABLE Customers
+ADD Email varchar(255);
+ALTER TABLE - DROP COLUMN
+To delete a column in a table, use the following syntax (notice that some database systems don't allow deleting a column):
+
+Syntax
+ALTER TABLE table_name
+DROP COLUMN column_name;
+The following SQL deletes the "Email" column from the "Customers" table:
+
+Example
+ALTER TABLE Customers
+DROP COLUMN Email;
+ALTER TABLE - RENAME COLUMN
+To rename a column in a table, use the following syntax:
+
+Syntax
+ALTER TABLE table_name
+RENAME COLUMN old_name to new_name;
+To rename a column in a table in SQL Server, use the following syntax:
+
+Syntax for SQL Server:
+EXEC sp_rename 'table_name.old_name', 'new_name', 'COLUMN';
+REMOVE ADS
+
+ALTER TABLE - MODIFY Datatype
+To modify the data type, size or constraints of a column in a table, use the following syntax:
+
+Syntax for SQL Server / MS Access:
+ALTER TABLE table_name
+ALTER COLUMN column_name new_datatype constraint;
+Syntax for MySQL / Oracle:
+ALTER TABLE table_name
+MODIFY column_name new_datatype constraint;
+The following SQL modifies the size of the "Email" column to varchar(100), and we also add a NOT NULL constraint:
+
+Example
+ALTER TABLE Customers
+MODIFY Email varchar(100) NOT NULL;
+ALTER TABLE - ADD CONSTRAINT
+To add a constraint to an existing table, use the following syntax:
+
+Syntax
+ALTER TABLE table_name
+ADD CONSTRAINT constraint_name constraint_definition;
+The following SQL adds a constraint named "CHK_Age" that is a CHECK constraint that ensures that the "Age" column has a value of 18 and above:
+
+Example
+ALTER TABLE Members
+ADD CONSTRAINT CHK_Age CHECK (Age >= 18);
+ALTER TABLE - Rename table
+To rename a table, use the following syntax:
+
+Syntax
+ALTER TABLE table_name
+RENAME TO new_table_name;
+The following SQL renames the "Customers" table to "Clients":
+
+Example
+ALTER TABLE Customers
+RENAME TO Clients;
+REMOVE ADS
+
+SQL ALTER TABLE Example
+Assume we have a "Persons" table, that looks like this:
+
+ID	LastName	FirstName	Address	City
+1	Hansen	Ola	Timoteivn 10	Sandnes
+2	Svendson	Tove	Borgvn 23	Sandnes
+3	Pettersen	Kari	Storgt 20	Stavanger
+Now we want to add a column named "DateOfBirth" in the "Persons" table.
+
+We use the following SQL statement:
+
+Example
+ALTER TABLE Persons
+ADD DateOfBirth date;
+Notice that the new column, "DateOfBirth", is of type date and is going to hold a date. The data type specifies what type of data the column can hold. For a complete reference of all the data types available in MS Access, MySQL, and SQL Server, go to our complete Data Types reference.
+
+The "Persons" table will now look like this:
+
+ID	LastName	FirstName	Address	City	DateOfBirth
+1	Hansen	Ola	Timoteivn 10	Sandnes	 
+2	Svendson	Tove	Borgvn 23	Sandnes	 
+3	Pettersen	Kari	Storgt 20	Stavanger	 
+Change Data Type Example
+Now we want to change the data type of the column named "DateOfBirth" in the "Persons" table.
+
+We use the following SQL statement:
+
+Example
+ALTER TABLE Persons
+ALTER COLUMN DateOfBirth year;
+Notice that the "DateOfBirth" column is now of type year and is going to hold a year in a two- or four-digit format.
+
+DROP COLUMN Example
+Next, we want to delete the column named "DateOfBirth" in the "Persons" table.
+
+We use the following SQL statement:
+
+Example
+ALTER TABLE Persons
+DROP COLUMN DateOfBirth;
+
+# INSERT INTO Statement
+
+The INSERT INTO statement is used to insert new records in a table.
+
+It is possible to write the INSERT INTO statement in two ways:
+
+Syntax 1
+Specify both the column names and the values to be inserted:
+
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+Syntax 2
+If you insert values for ALL the columns of the table, you can omit the column names.
+
+However, the order of the values must be in the same order as the columns in the table:
+
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+
+Demo Database
+Below is a selection from the Customers table used in the examples:
+
+CustomerID	CustomerName	ContactName	Address	City	PostalCode	Country
+89	White Clover Markets	Karl Jablonski	305 - 14th Ave. S. Suite 3B	Seattle	98128	USA
+90
+
+Wilman Kala	Matti Karttunen	Keskuskatu 45	Helsinki	21240	Finland
+91
+
+Wolski	Zbyszek	ul. Filtrowa 68	Walla	01-012	Poland
+
+REMOVE ADS
+
+INSERT INTO Example
+Here we insert values for ALL the columns of the table, so we omit the column names.
+
+The following SQL inserts a new record in the "Customers" table:
+
+ExampleGet your own SQL Server
+INSERT INTO Customers
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+The last record in the "Customers" table will now look like this:
+
+CustomerID	CustomerName	ContactName	Address	City	PostalCode	Country
+92	Cardinal	Tom B. Erichsen	Skagen 21	Stavanger	4006	Norway
+Notice that we did not insert any number into the CustomerID field!
+
+The CustomerID column is an auto-increment field and will be automatically generated when a new record is inserted.
+
+Insert Data Only in Specific Columns
+Here we insert values only in some specific columns of the table.
+
+The following SQL inserts a new record - but only inserts data in the "CustomerName", "City", and "Country" columns (CustomerID will be updated automatically):
+
+Example
+INSERT INTO Customers (CustomerName, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+The last record in the "Customers" table will now look like this:
+
+CustomerID	CustomerName	ContactName	Address	City	PostalCode	Country
+92	Cardinal	null	null	Stavanger	null	Norway
+REMOVE ADS
+
+Insert Multiple Rows
+To insert multiple rows of data, we use the same INSERT INTO statement, but with multiple values:
+
+The following SQL inserts three new records in the "Customers" table:
+
+Example
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES
+('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway'),
+('Greasy Burger', 'Per Olsen', 'Gateveien 15', 'Sandnes', '4306', 'Norway'),
+('Tasty Tee', 'Finn Egan', 'Streetroad 19B', 'Liverpool', 'L1 0AA', 'UK');
+Note: Make sure you separate each set of values with a comma ,.
 # Conclusion
 The CRUD operations—Create, Read, Update, and Delete—are the core functions for interacting with a MySQL database. 
 They allow you to manage the data stored in the database effectively. Using the INSERT statement, you can add new records. 
