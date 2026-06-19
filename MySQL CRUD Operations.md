@@ -13,44 +13,57 @@ CRUD stands for Create, Read, Update, and Delete. These operations form the basi
 ## 1. Create: Inserting Data into Tables
 The CREATE operation is used to insert new records into a table. This is achieved using the INSERT INTO statement, specifying the table name, column names, and the values to be inserted.
 
-Syntax:
+### Syntax:
+```
 1	INSERT INTO table_name (column1, column2, column3, ...)
 2	VALUES (value1, value2, value3, ...);
+```
 
 Example:
 Let’s insert data into a Customers table.
-
+```
 1	INSERT INTO customers (customer_id, name, email, phone)
 2	VALUES (1, 'John Smith', 'john@example.com', '555-1234');
+```
 
+```
 customer_id	name	email	phone
 1	John Smith	john@example.com	555-1234
-Inserting Multiple Rows:
+```
+
+### Inserting Multiple Rows:
 You can insert multiple rows in one query.
 
+```
 1	INSERT INTO customers (customer_id, name, email, phone)
 2	VALUES
 3	(2, 'Jane Doe', 'jane@example.com', '555-5678'),
 4	(3, 'Alex Turner', 'alex@example.com', '555-8765');
+```
 
 ## 2. Read: Retrieving Data from Tables
 The READ operation is used to query and retrieve data from a table. This is done using the SELECT statement. You can specify which columns to display, apply conditions using the WHERE clause, and sort results using the ORDER BY clause.
 
-Syntax:
+### Syntax:
+```
 1	SELECT column1, column2, column3, ...
 2	FROM table_name
 3	WHERE condition
 4	ORDER BY column_name;
+```
 
 Example:
 Retrieve all customer records from the Customers table.
 
+```
 1	SELECT * FROM customers;
 
 customer_id	name	email	phone
 1	John Smith	john@example.com	555-1234
 2	Jane Doe	jane@example.com	555-5678
 3	Alex Turner	alex@example.com	555-8765
+```
+
 Reading Specific Columns:
 Retrieve only the name and email columns.
 
