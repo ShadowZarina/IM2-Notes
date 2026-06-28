@@ -5,8 +5,13 @@ There are two wildcards often used in conjunction with the LIKE operator:
 A percent sign % - represents zero, one, or multiple characters
 A underscore sign _ - represents a single character
 The following SQL selects all customers that starts with the letter "a":
-Example
-Get your own SQL Server
+
+# REFERENCE
+
+[SQL LIKE Operator](https://www.w3schools.com/sql/sql_like.asp)
+
+# EXAMPLE SYNTAX
+
 Select all customers that starts with the letter "a":
 SELECT * FROM Customers
 WHERE CustomerName LIKE 'a%';
