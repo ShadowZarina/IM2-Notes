@@ -3,12 +3,15 @@ The GROUP BY statement is used to group rows that have the same values into summ
 The GROUP BY statement is almost always used in conjunction with aggregate functions, like COUNT(), MAX(), MIN(), SUM(), AVG(), to perform calculations on each group.
 
 ## Count vs group by vs order by
-- Count = 5
-– SELECT COUNT(first_name) FROM customers;
-- Group By 
-– SELECT * FROM customers GROUP BY UserID;
-- Order By
-– SELECT * FROM customers ORDER BY UserID DESC;
+-- COUNT
+SELECT COUNT(first_name) FROM customers;
+-- GROUP BY
+SELECT * FROM customers GROUP BY UserID;
+-- ORDER BY
+SELECT * FROM customers ORDER BY UserID DESC;
+-- HAVING
+SELECT * FROM customers GROUP BY UserID HAVING UserID < 2000;
+
 
 -- 20. 
 SELECT category_id, COUNT(*) FROM products GROUP BY category_id;
