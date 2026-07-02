@@ -28,6 +28,15 @@
   
 ## 2. Additional Operations/Functions
 - IN/NOT IN
+- **FOREIGN KEY**: FOREIGN KEY (customer_id) REFERENCES customers(customer_id);
+
+### CONSTRAINTS
+- PRIMARY KEY
+- FOREIGN KEY: FOREIGN KEY (customer_id) REFERENCES customers(customer_id);
+- UNIQUE
+- NOT NULL
+- DEFAULT
+- CHECK
 
 ### DATABASE STATEMEBTS
 - CREATE DATABASE:
@@ -50,12 +59,14 @@ DROP DATABASE old_db_name;
 ### TABLE STATEMENTS
 - ADD TABLE: CREATE TABLE table_name ();
 - DROP TABLE: DROP TABLE table_name;
-- UPDATE TABLE: UPDATE table SET column = value WHERE
+- UPDATE TABLE: UPDATE table SET column = value WHERE condition;
+- TRUNCATE TABLE (delete data): TRUNCATE TABLE table
+- RENAME TABLE: RENAME TABLE old_table_name TO new_table_name;
 
 ### COLUMN STATEMENTS
-- ADD COLUMN: ALTER TABLE table_name ADD column_name TYPE;
+- ADD COLUMN: ALTER TABLE table_name ADD COLUMN column_name TYPE;
 - DROP COLUMN: ALTER TABLE table_name DROP COLUMN column_name;
-- MODIFY COLUMN: ALTER TABLE table_name MODIFY column_name TYPE;
+- MODIFY COLUMN: ALTER TABLE table_name MODIFY COLUMN column_name TYPE;
 - RENAME COLUMN: ALTER TABLE table_name RENAME COLUMN old_name TO new_name;
 
 ## 3. Standard Built-in SQL Functions
@@ -69,7 +80,8 @@ DROP DATABASE old_db_name;
 These functions compress data from multiple rows into a single summary value and are heavily utilized alongside GROUP BY clauses.
 - COUNT(): Counts the number of rows or non-null values.
 - SUM(): Calculates the total addition of a numeric column.
-- AVG(): Computes the average value of a numeric column.MIN(): Returns the lowest value in a set.
+- AVG(): Computes the average value of a numeric column.
+- MIN(): Returns the lowest value in a set.
 - MAX(): Returns the highest value in a set.
 
 ### b. String (Scalar) Functions<br>
